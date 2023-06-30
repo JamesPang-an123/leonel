@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+      background-color: gray;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculator {
+      width: 240px;
+      margin: 50px auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    .calculator input {
+      width: 92%;
+      margin-bottom: 5px;
+      padding: 10px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .calculator .row {
+      display: flex;
+    }
+
+    .calculator .row .button {
+      flex: 1;
+      margin: 2px;
+    }
+
+    .calculator .row .button:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    .calculator .row .button:last-child {
+      margin-bottom: 0;
+    }
+
+    .calculator .row .button:hover {
+      background-color: #e6e6e6;
+    }
+
+    .calculator .row .button:active {
+      background-color: #d9d9d9;
+    }
+
+    .calculator .row .button[value="="] {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    .calculator .row .button[value="="]:hover {
+      background-color: #2184c3;
+    }
+
+    .calculator .row .button[value="="]:active {
+      background-color: #1b6ca8;
+    }
+
+    .calculator .row .button[value="Clear"] {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+
+    .calculator .row .button[value="Clear"]:hover {
+      background-color: #c0392b;
+    }
+
+    .calculator .row .button[value="Clear"]:active {
+      background-color: #a5281b;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="result" readonly>
+
+    <div class="row">
+      <input type="button" class="button" value="7" onclick="appendValue('7')">
+      <input type="button" class="button" value="8" onclick="appendValue('8')">
+      <input type="button" class="button" value="9" onclick="appendValue('9')">
+      <input type="button" class="button" value="/" onclick="appendValue('/')">
+    </div>
+
+    <div class="row">
+      <input type="button" class="button" value="4" onclick="appendValue('4')">
+      <input type="button" class="button" value="5" onclick="appendValue('5')">
+      <input type="button" class="button" value="6" onclick="appendValue('6')">
+      <input type="button" class="button" value="*" onclick="appendValue('*')">
+    </div>
+
+    <div class="row">
+      <input type="button" class="button" value="1" onclick="appendValue('1')">
+      <input type="button" class="button" value="2" onclick="appendValue('2')">
+      <input type="button" class="button" value="3" onclick="appendValue('3')">
+      <input type="button" class="button" value="-" onclick="appendValue('-')">
+    </div>
+
+    <div class="row">
+      <input type="button" class="button" value="0" onclick="appendValue('0')">
+      <input type="button" class="button" value="." onclick="appendValue('.')">
+      <input type="button" class="button" value="=" onclick="calculate()">
+      <input type="button" class="button" value="+" onclick="appendValue('+')">
+    </div>
+
+    <div class="row">
+      <input type="button" class="button" value="Clear" onclick="clearInput()">
+    </div>
+  </div>
+
+  <script>
+    function appendValue(value) {
+      document.getElementById('result').value += value;
+    }
+
+    function calculate() {
+      var result = document.getElementById('result').value;
+      var answer = eval(result);
+      document.getElementById('result').value = answer;
+    }
+
+    function clearInput() {
+      document.getElementById('result').value = '';
+    }
+  </script>
+</body>
+</html>
